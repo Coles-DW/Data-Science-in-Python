@@ -207,8 +207,7 @@ For your convenience, the pandas package has been imported as pd and the 'tweets
 
 # Define count_entries()
 def count_entries(df, col_name):
-    """Return a dictionary with counts of 
-    occurrences as value for each key."""
+    """Return a dictionary with counts of occurrences as value for each key."""
 
     # Initialize an empty dictionary: langs_count
     langs_count = {}
