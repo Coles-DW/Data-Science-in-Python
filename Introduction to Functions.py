@@ -233,3 +233,314 @@ result = count_entries(tweets_df, 'lang')
 
 # Print the result
 print(result)
+
+In this exercise, you will practice what you've learned about scope in functions. The variable num has been predefined as 5, alongside the following function definitions:
+
+def func1():
+    num = 3
+    print(num)
+
+def func2():
+    global num
+    double_num = num * 2
+    num = 6
+    print(double_num)
+Try calling func1() and func2() in the shell, then answer the following questions:
+
+What are the values printed out when you call func1() and func2()?
+What is the value of num in the global scope after calling func1() and func2()?
+
+Possible answers
+
+
+func1() prints out 3, func2() prints out 6, and the value of num in the global scope is 3.
+
+func1() prints out 3, func2() prints out 3, and the value of num in the global scope is 3.
+
+func1() prints out 3, func2() prints out 10, and the value of num in the global scope is 10.
+
+*func1() prints out 3, func2() prints out 10, and the value of num in the global scope is 6.
+
+The keyword global
+Let's work more on your mastery of scope. In this exercise, you will use the keyword global within a function to alter the value of a variable defined in the global scope.
+
+# Create a string: team
+team = "teen titans"
+
+# Define change_team()
+def change_team():
+    """Change the value of the global variable team."""
+
+    # Use team in global scope
+    global team
+
+    # Change the value of team in global: team
+    team = "justice league"
+# Print team
+print(team)
+
+# Call change_team()
+change_team()
+
+# Print team
+print(team)
+
+Python's built-in scope
+Here you're going to check out Python's built-in scope, which is really just a built-in module called builtins. However, to query builtins, you'll need to import builtins 'because the name builtins is not itself built in…No, I’m serious!' (Learning Python, 5th edition, Mark Lutz). After executing import builtins in the IPython Shell, execute dir(builtins) to print a list of all the names in the module builtins. Have a look and you'll see a bunch of names that you'll recognize! Which of the following names is NOT in the module builtins?
+
+In [5]:
+import builtins
+In [6]:
+dir(builtins)
+Out[6]:
+
+['ArithmeticError',
+ 'AssertionError',
+ 'AttributeError',
+ 'BaseException',
+ 'BaseExceptionGroup',
+ 'BlockingIOError',
+ 'BrokenPipeError',
+ 'BufferError',
+ 'BytesWarning',
+ 'ChildProcessError',
+ 'ConnectionAbortedError',
+ 'ConnectionError',
+ 'ConnectionRefusedError',
+ 'ConnectionResetError',
+ 'DeprecationWarning',
+ 'EOFError',
+ 'Ellipsis',
+ 'EncodingWarning',
+ 'EnvironmentError',
+ 'Exception',
+ 'ExceptionGroup',
+ 'False',
+ 'FileExistsError',
+ 'FileNotFoundError',
+ 'FloatingPointError',
+ 'FutureWarning',
+ 'GeneratorExit',
+ 'IOError',
+ 'ImportError',
+ 'ImportWarning',
+ 'IndentationError',
+ 'IndexError',
+ 'InterruptedError',
+ 'IsADirectoryError',
+ 'KeyError',
+ 'KeyboardInterrupt',
+ 'LookupError',
+ 'MemoryError',
+ 'ModuleNotFoundError',
+ 'NameError',
+ 'None',
+ 'NotADirectoryError',
+ 'NotImplemented',
+ 'NotImplementedError',
+ 'OSError',
+ 'OverflowError',
+ 'PendingDeprecationWarning',
+ 'PermissionError',
+ 'ProcessLookupError',
+ 'RecursionError',
+ 'ReferenceError',
+ 'ResourceWarning',
+ 'RuntimeError',
+ 'RuntimeWarning',
+ 'StopAsyncIteration',
+ 'StopIteration',
+ 'SyntaxError',
+ 'SyntaxWarning',
+ 'SystemError',
+ 'SystemExit',
+ 'TabError',
+ 'TimeoutError',
+ 'True',
+ 'TypeError',
+ 'UnboundLocalError',
+ 'UnicodeDecodeError',
+ 'UnicodeEncodeError',
+ 'UnicodeError',
+ 'UnicodeTranslateError',
+ 'UnicodeWarning',
+ 'UserWarning',
+ 'ValueError',
+ 'Warning',
+ 'ZeroDivisionError',
+ '_',
+ '__IPYTHON__',
+ '__build_class__',
+ '__debug__',
+ '__doc__',
+ '__import__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ 'abs',
+ 'aiter',
+ 'all',
+ 'anext',
+ 'any',
+ 'ascii',
+ 'bin',
+ 'bool',
+ 'breakpoint',
+ 'bytearray',
+ 'bytes',
+ 'callable',
+ 'chr',
+ 'classmethod',
+ 'compile',
+ 'complex',
+ 'copyright',
+ 'credits',
+ 'delattr',
+ 'dict',
+ 'dir',
+ 'display',
+ 'divmod',
+ 'enumerate',
+ 'eval',
+ 'exec',
+ 'filter',
+ 'float',
+ 'format',
+ 'frozenset',
+ 'get_ipython',
+ 'getattr',
+ 'globals',
+ 'hasattr',
+ 'hash',
+ 'help',
+ 'hex',
+ 'id',
+ 'input',
+ 'int',
+ 'isinstance',
+ 'issubclass',
+ 'iter',
+ 'len',
+ 'license',
+ 'list',
+ 'locals',
+ 'map',
+ 'max',
+ 'memoryview',
+ 'min',
+ 'next',
+ 'object',
+ 'oct',
+ 'open',
+ 'ord',
+ 'pow',
+ 'print',
+ 'property',
+ 'range',
+ 'repr',
+ 'reversed',
+ 'round',
+ 'set',
+ 'setattr',
+ 'slice',
+ 'sorted',
+ 'staticmethod',
+ 'str',
+ 'sum',
+ 'super',
+ 'tuple',
+ 'type',
+ 'vars',
+ 'zip']
+
+ Possible answers
+
+
+'sum'
+
+'range'
+
+*'array'
+
+'tuple'
+
+Nested Functions I
+You've learned in the last video about nesting functions within functions. One reason why you'd like to do this is to avoid writing out the same computations within functions repeatedly. There's nothing new about defining nested functions: you simply define it as you would a regular function with def and embed it inside another function!
+
+In this exercise, inside a function three_shouts(), you will define a nested function inner() that concatenates a string object with !!!. three_shouts() then returns a tuple of three elements, each a string concatenated with !!! using inner(). Go for it!
+
+# Define three_shouts
+def three_shouts(word1, word2, word3):
+    """Returns a tuple of strings
+    concatenated with '!!!'."""
+
+    # Define inner
+    def inner(word):
+        """Returns a string concatenated with '!!!'."""
+        return word + '!!!'
+
+    # Return a tuple of strings
+    return (inner(word1), inner(word2), inner(word3))
+
+# Call three_shouts() and print
+print(three_shouts('a', 'b', 'c'))
+
+Nested Functions II
+Great job, you've just nested a function within another function. One other pretty cool reason for nesting functions is the idea of a closure. This means that the nested or inner function remembers the state of its enclosing scope when called. Thus, anything defined locally in the enclosing scope is available to the inner function even when the outer function has finished execution.
+
+Let's move forward then! In this exercise, you will complete the definition of the inner function inner_echo() and then call echo() a couple of times, each with a different argument. Complete the exercise and see what the output will be!
+
+# Define echo
+def echo(n):
+    """Return the inner_echo function."""
+
+    # Define inner_echo
+    def inner_echo(word1):
+        """Concatenate n copies of word1."""
+        echo_word = word1 * n
+        return echo_word
+
+    # Return inner_echo
+    
+    return inner_echo
+
+# Call echo: twice
+twice = echo(2)
+
+# Call echo: thrice
+thrice = echo(3)
+
+# Call twice() and thrice() then print
+print(twice('hello'), thrice('hello'))
+
+The keyword nonlocal and nested functions
+Let's once again work further on your mastery of scope! In this exercise, you will use the keyword nonlocal within a nested function to alter the value of a variable defined in the enclosing scope.
+
+# Define echo_shout()
+def echo_shout(word):
+    """Change the value of a nonlocal variable"""
+    
+    # Concatenate word with itself: echo_word
+    echo_word = word + word
+    
+    # Print echo_word
+    print(echo_word)
+    
+    # Define inner function shout()
+    def shout():
+        """Alter a variable in the enclosing scope"""    
+        # Use echo_word in nonlocal scope
+        nonlocal echo_word
+        
+        # Change echo_word to echo_word concatenated with '!!!'
+        echo_word = echo_word + '!!!'
+    
+    # Call function shout()
+    shout()
+    
+    # Print echo_word
+    print(echo_word)
+
+# Call function echo_shout() with argument 'hello'
+echo_shout('hello')
